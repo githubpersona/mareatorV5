@@ -1,0 +1,50 @@
+Mareas:
+
+- Instituto Hidrográfico de la Marina (IHM):
+
+LAS HORAS ESTÁN EN GMT / UTC, HAY QUE AJUSTARLAS A CEST (+1 EN INVIERNO, +2 EN VERANO)
+
+https://ideihm.covam.es/api-ihm/getmarea
+
+https://ideihm.covam.es/api-ihm/getmarea?request=gettide&id=20&format=json
+
+Coruña: id: 20
+Langosteira: 70
+Sada: 19
+Ferrol: 18
+
+https://armada.defensa.gob.es/ihm/Documentacion/Mareas/docs/coeficientes_2023.pdf
+
+Oleaje:
+
+- API open meteo:
+
+https://open-meteo.com/en/docs/marine-weather-api#api_form
+
+ejemplo: https://marine-api.open-meteo.com/v1/marine?latitude=43.3781&longitude=-8.3936&hourly=wave_height,wave_direction
+
+Viento:
+
+- API open meteo:
+
+https://open-meteo.com/en/docs/marine-weather-api#api_form
+
+ejemplo: https://api.open-meteo.com/v1/forecast?latitude=43.4&longitude=-8.4&hourly=windspeed_10m,winddirection_10m&timezone=Europe%2FBerlin
+
+
+- API georeferencia inversa:
+
+https://geocode.maps.co/reverse?lat=43.3781&lon=-8.393
+address: Object { road: "Paseo Marítimo", neighbourhood: "Agra de Santo Amaro", suburb: "Adormideras", … }
+​​city: "La Coruña" civil_parish: "A Coruña"    country: "España" country_code: "es" county: "La Coruña" neighbourhood: "Agra de Santo Amaro" postcode: "15001" province: "La Coruña" road: "Paseo Marítimo" state: "Galicia" suburb: "Adormideras"
+
+NO - https://nominatim.openstreetmap.org/search.php?q=43.4,-8.4&polygon_geojson=1&format=json
+
+
+
+
+GRAN DIFERENCIA:
+
+https://api.open-meteo.com/v1/forecast?latitude=43.3781&longitude=-8.393&hourly=windspeed_10m,winddirection_10m&timezone=Europe%2FBerlin
+
+https://api.open-meteo.com/v1/forecast?latitude=43.3781&longitude=-8.3936&hourly=windspeed_10m,winddirection_10m&timezone=Europe%2FBerlin
