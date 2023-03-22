@@ -90,7 +90,7 @@ const MareasAhora = (props) => {
                 indice_marea_referencia = puntos_marea.length - 1;
                 marea_referencia = puntos_marea[indice_marea_referencia];
 
-                debugger;
+                // debugger;
 
 
                 // // // CALCULAR ESTADO Y NIVEL DE MAREA

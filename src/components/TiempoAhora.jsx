@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import Cargando from './Cargando';
 
-
 const TiempoAhora = (props) => {
 
     const fecha_actual = new Date();
@@ -13,7 +12,7 @@ const TiempoAhora = (props) => {
     const [temperatura, setTemperatura] = useState("");
     const [precipitacion, setPrecipitacion] = useState("");
     const [nubosidad, setNubosidad] = useState("");
-    const [lluvia, setLluvia] = useState("");
+    const [lluviaxhoras, setLluviaXHoras] = useState("");
 
     const img_nubosidad = useRef(null);
     const img_lluvia = useRef(null);
@@ -97,6 +96,7 @@ const TiempoAhora = (props) => {
                 setTemperatura(temperatura);
                 setPrecipitacion(precipitacion);
                 setNubosidad(nubosidad);
+                setLluviaXHoras(lluviaxhoras);
 
                 // setTexto_tiempo(texto_tiempo);
             })
@@ -105,37 +105,39 @@ const TiempoAhora = (props) => {
     recolectar_tiempo();
 
     return (
+        <>
+            <div className="card m-2" style={{ width: "100%", }}>
+                <table cellSpacing="0" cellPadding="0">
+                    <tbody>
+                        <tr>
+                            <td style={{ width: "20%", }}>
+                                <img src='imagenes/tiempo_redondo.png' style={{ width: "4rem", }} />
+                            </td>
+                            <td>
+                                <div style={estilo_1linea}>{temperatura + "ᵒ "}</div>
+                            </td>
+                            <td>
+                                <img src='imagenes/sol.png' ref={img_nubosidad} style={{ width: "4rem", }} />
+                            </td>
+                            <td>
+                                <img src='imagenes/seco.png' ref={img_lluvia} style={{ width: "4rem", }} />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                {nubosidad}%
+                            </td>
+                            <td>
+                                {precipitacion + "% "}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-        <div className="card m-2" style={{ width: "100%", }}>
-            <table cellSpacing="0" cellPadding="0">
-                <tbody>
-                    <tr>
-                        <td style={{ width: "20%", }}>
-                            <img src='imagenes/tiempo_redondo.png' style={{ width: "4rem", }} />
-                        </td>
-                        <td>
-                            <div style={estilo_1linea}>{temperatura + "ᵒ "}</div>
-                        </td>
-                        <td>
-                            <img src='imagenes/sol.png' ref={img_nubosidad} style={{ width: "4rem", }} />
-                        </td>
-                        <td>
-                            <img src='imagenes/seco.png' ref={img_lluvia} style={{ width: "4rem", }} />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            {nubosidad}%
-                        </td>
-                        <td>
-                            {precipitacion + "% "}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        </>
     );
 
 

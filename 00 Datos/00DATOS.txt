@@ -1,3 +1,21 @@
+Tiempo:
+
+AEMET:
+
+    API key:
+    eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzb3ljYXJsb3NuaWV2ZXNAcHJvdG9ubWFpbC5jb20iLCJqdGkiOiI0NzUxNmY0Zi1iYmVhLTQ1MzYtYmU5Mi1hYzQ2ZDgzNzVhNGYiLCJpc3MiOiJBRU1FVCIsImlhdCI6MTY3OTE1MjQ1NCwidXNlcklkIjoiNDc1MTZmNGYtYmJlYS00NTM2LWJlOTItYWM0NmQ4Mzc1YTRmIiwicm9sZSI6IiJ9.8yuNoZeP4QYgtnq8ivQSUmpP6h768fl7N68D4CNagyo
+
+    Miño: 15048
+
+    Ejemplo datos:
+    https://opendata.aemet.es/opendata/sh/35043832
+
+
+        3.5 ¿Está limitado el número de conexiones?
+        El número de conexiones están limitadas a 50 por minuto por API Key, para evitar los
+        posibles problemas de sobrecarga del sistema. También hay un límite global de conexiones
+        para garantizar el funcionamiento adecuado del servicio
+    
 Mareas:
 
 - Instituto Hidrográfico de la Marina (IHM):
@@ -48,3 +66,20 @@ GRAN DIFERENCIA:
 https://api.open-meteo.com/v1/forecast?latitude=43.3781&longitude=-8.393&hourly=windspeed_10m,winddirection_10m&timezone=Europe%2FBerlin
 
 https://api.open-meteo.com/v1/forecast?latitude=43.3781&longitude=-8.3936&hourly=windspeed_10m,winddirection_10m&timezone=Europe%2FBerlin
+
+
+script AEMET ajax:
+
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://opendata.aemet.es/opendata/api/prediccion/especifica/municipio/horaria/15048/?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzb3ljYXJsb3NuaWV2ZXNAcHJvdG9ubWFpbC5jb20iLCJqdGkiOiI0NzUxNmY0Zi1iYmVhLTQ1MzYtYmU5Mi1hYzQ2ZDgzNzVhNGYiLCJpc3MiOiJBRU1FVCIsImlhdCI6MTY3OTE1MjQ1NCwidXNlcklkIjoiNDc1MTZmNGYtYmJlYS00NTM2LWJlOTItYWM0NmQ4Mzc1YTRmIiwicm9sZSI6IiJ9.8yuNoZeP4QYgtnq8ivQSUmpP6h768fl7N68D4CNagyo",
+    "method": "GET",
+    "headers": {
+      "cache-control": "no-cache"
+    }
+  }
+  
+  $.ajax(settings).done(function (response) {
+    console.log(response);
+  });

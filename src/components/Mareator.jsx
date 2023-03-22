@@ -1,24 +1,12 @@
-import { useState } from "react";
-import MarAhora from "./MarAhora";
+import AppRutas from '../Rutas/AppRutas'
+
+
 
 const Mareator = () => {
 
     return (
         <div>
-            <table cellSpacing="0" cellPadding="0" style={{ width: "100%", }}>
-                <tbody>
-                    <tr>
-                        <td style={{ width: "50%", }}>
-                            <h1>Mareator 0.4.4</h1>
-                        </td>
-                        <td>
-                            Lapp para hacer la práctica
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <hr />
-            <MarAhora />
+            <AppRutas />
         </div>
     );
 

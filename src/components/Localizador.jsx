@@ -1,35 +1,19 @@
 import React from 'react';
 import { useState } from 'react';
-
+import { useContext } from 'react'
+import { UserContext } from '../Contexts/UserContext';
+import { DatosLocalizacion } from "../Helpers/DatosLocalizacion";
 
 
 // const Localizador = ({ setLatitud }, { latitud }) => {
-const Localizador = (props) => {
+const Localizador = () => {
 
-    const localizaciones = {
-        "localizacion": [{
-            "id": 1,
-            "nombre": "Coruña",
-            "latitud": 43.3781,
-            "longitud": -8.393,
-            "estacion": 20
-        },
-        {
-            "id": 2,
-            "nombre": "Miño",
-            "latitud": 43.3521,
-            "longitud": -8.222,
-            "estacion": 19
-        },
-        {
-            "id": 3,
-            "nombre": "Doniños",
-            "latitud": 43.4969,
-            "longitud": -8.324,
-            "estacion": 18
-        }]
-    };
-    console.log(localizaciones);
+    // const { latitud, setLatitud } = useContext(UserContext);
+    // const { longitud, setLongitud } = useContext(UserContext);
+    // const { estacion, setEstacion } = useContext(UserContext);
+
+    const { localizacion, setLocalizacion } = useContext(UserContext);
+
     const [latitud_aqui, setLatitud_aqui] = useState();
     const [longitud_aqui, setLongitud_aqui] = useState();
     // const [direccion, setDireccion] = useState("");
@@ -42,11 +26,11 @@ const Localizador = (props) => {
     });
 
     // fetch("https://nominatim.openstreetmap.org/search.php?q=" + props.latitu>d + "," + props.longitud + "&polygon_geojson=1&format=json")
-    fetch("https://geocode.maps.co/reverse?lat=" + props.latitud + "&lon=" + props.longitud)
+    fetch("https://geocode.maps.co/reverse?lat=" + localizacion.latitud + "&lon=" + localizacion.longitud)
         .then(response => response.json())
         .then(j => {
             var array = j.display_name.split(',');
-            setDireccion(array[4] + " - " + array[3] + " - " + array[2] + " (" + props.latitud + ", " + props.longitud + ")");
+            setDireccion(array[4] + " - " + array[3] + " - " + array[2] + " (" + localizacion.latitud + ", " + localizacion.longitud + ")");
         });
 
     // function sayHello(name) {
@@ -55,17 +39,27 @@ const Localizador = (props) => {
 
     function localizar(localizar_a) {
         // console.log(localizar_a);
+
         if (localizar_a == 0) {
-            props.setLatitud(latitud_aqui);
-            props.setLongitud(longitud_aqui);
+            let localizacion_temp = localizacion;
+            localizacion_temp.latitud = latitud_aqui;
+            localizacion_temp.longitud = longitud_aqui;
+            setLocalizacion(localizacion_temp);
         } else {
-            props.setLatitud(localizaciones.localizacion[localizar_a - 1].latitud);
-            props.setLongitud(localizaciones.localizacion[localizar_a - 1].longitud);
+            // let temp = latitud;
+            // temp[0] = localizaciones.localizacion[localizar_a - 1].latitud.toString();
+            // setLatitud(temp);
+            // temp = longitud;
+            // temp[0] = localizaciones.localizacion[localizar_a - 1].longitud.toString();
+            // setLongitud(temp);
+            setLocalizacion(DatosLocalizacion.localizacion[localizar_a - 1]);
         }
     }
 
     return (
         <>
+        {/* <UserContext.Consumer> */}
+
             <div className="alert alert-info" role="alert">
                 <table cellSpacing="0" cellPadding="0">
                     <tbody>
@@ -94,12 +88,17 @@ const Localizador = (props) => {
                                 <button type="button" className="btn btn-info" onClick={() => localizar(3)}>Doniños</button>
                             </td>
                             <td style={{ width: "25%", }}>
+                                <button type="button" className="btn btn-info" onClick={() => localizar(4)}>Barmouth</button>
+                            </td>
+                            <td style={{ width: "25%", }}>
                                 <button type="button" className="btn btn-info" onClick={() => localizar(0)}>Aquí</button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+            {/* </UserContext.Consumer> */}
+
         </>
     )
 }
