@@ -6,8 +6,7 @@ import { UserContext } from "./Contexts/UserContext";
 import { DatosLocalizacion } from "./Helpers/DatosLocalizacion";
 
 const App = () => {
-  // localStorage.setItem("localizacion", DatosLocalizacion.localizacion[0]);
-  debugger;
+  const version = "0.4.9.4 zarza";
   if (localStorage.getItem("localizacion_local") === null) {
     localStorage.setItem(
       "localizacion_local",
@@ -21,7 +20,7 @@ const App = () => {
   return (
     <UserContext.Provider value={estado}>
       <AppRutas />
-      <Pie />
+      <Pie version={version} />
     </UserContext.Provider>
   );
 };
