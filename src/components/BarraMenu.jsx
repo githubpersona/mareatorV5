@@ -3,9 +3,10 @@ import { NavLink } from 'react-router-dom'
 
 const BarraMenu = () => {
     return (
-        <nav className='navbar navbar-expand navbar-dark bg-info'>
-            <div className='container-fluid'>
-                <h2 className="navbar-brand" href="#"> Mareator 0.4.6.1 alfa </h2>
+        <nav className='navbar navbar-expand navbar-dark bg-info cabecera'>
+            <div className='container-fluid' fixed='top'>
+                <img src='imagenes/surf.png' width='20px'></img>
+                <h2 className="navbar-brand" href="#"> Mareator</h2>
                 <button
                     className='navbar-toggler'
                     type='button'
@@ -17,11 +18,16 @@ const BarraMenu = () => {
                 >
                     <span className='navbar-toggler-icon'></span>
                 </button>
-                <div className='collapse navbar-collapse' id='navbarSupportedContent'>
-                    <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
+                <div id='navbarSupportedContent'>
+                    <ul className='navbar-nav mb-0 py-0'>
                         <li className="navbar-item">
-                            <NavLink className="nav-link" aria-current='page' to='/mar_ahora'>
-                                Mar Ahora <span className="sr-only"></span>
+                            <NavLink className="nav-link" aria-current='page' to='/mar'>
+                                Mar <span className="sr-only"></span>
+                            </NavLink>
+                        </li>
+                        <li className="navbar-item">
+                            <NavLink className="nav-link" aria-current='page' to='/playas'>
+                                Playas <span className="sr-only"></span>
                             </NavLink>
                         </li>
                         <li className="navbar-item">

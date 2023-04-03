@@ -82,7 +82,7 @@ const MareasAhora = (props) => {
                     puntos_marea = [{ fecha_marea, marea, altura }].concat(puntos_marea); // [ 4, 3, 2, 1 ]
                 }
 
-                // console.log(puntos_marea);
+                console.log(puntos_marea);
 
 
                 // debugger;
@@ -143,7 +143,7 @@ const MareasAhora = (props) => {
 
                 nivel_marea_actual = Number.parseFloat(nivel_marea_actual).toFixed(1);
 
-                texto += "Marea " + estado_marea_actual + "  Nivel (sobre 6): " + nivel_marea_actual + " - Hora de marea " + marea_referencia.marea + ": " + String(marea_referencia.fecha_marea.getHours()).padStart(2, '0') + ":" + String(marea_referencia.fecha_marea.getMinutes()).padStart(2, '0');
+                texto += "Marea " + estado_marea_actual + "  Nivel: " + nivel_marea_actual + " - Hora de marea " + marea_referencia.marea + ": " + String(marea_referencia.fecha_marea.getHours()).padStart(2, '0') + ":" + String(marea_referencia.fecha_marea.getMinutes()).padStart(2, '0');
 
                 // debugger;
 
@@ -176,7 +176,7 @@ const MareasAhora = (props) => {
                             <img src='imagenes/marea_redondo.png' style={{ width: "4rem", }} />
                         </td>
                         <td>
-                            <div style={estilo_1linea}>{altura_marea + " (sobre 6)"}</div>
+                            <div style={estilo_1linea}>{altura_marea}</div>
                         </td>
                         <td>
                             <img src='imagenes/flecha_marea.png' ref={flecha_marea} style={{ width: "4rem", }} />
